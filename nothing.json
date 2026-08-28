@@ -1,0 +1,7 @@
+{
+  "revoked": false,
+  "revoked_users": {
+    "1": true
+  },
+  "global_notice": "Service Operational"
+}

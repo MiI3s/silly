@@ -1,4 +1,4 @@
-local host = "https://combinations-fiber-cheapest-oliver.trycloudflare.com"
+local host = "https://soliton-api.duckdns.org"
 
 local get = cloneref or function(o) return o end
 local HttpService = get(game:GetService("HttpService"))

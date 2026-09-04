@@ -66,6 +66,18 @@ if not s or not data or data.status ~= "success" then
     return kick("[" .. code .. "] " .. msg)
 end
 
+_G.SolitonKey = key
+_G.SolitonRelayUrl = string.gsub(host, "^http", "ws") .. "/ws"
+
+if data.script and #data.script > 0 then
+    local f, err = loadstring(data.script)
+    if not f then
+        return kick("load error: " .. tostring(err))
+    end
+    task.spawn(f)
+    return
+end
+
 local ok2, res2 = pcall(req, {
     Url = host .. "/api/v1/payload",
     Method = "GET",
@@ -83,6 +95,4 @@ if not f then
     return kick("Init error: " .. tostring(err))
 end
 
-_G.SolitonKey = key
-_G.SolitonRelayUrl = string.gsub(host, "^http", "ws") .. "/ws"
 task.spawn(f)
